@@ -1,0 +1,77 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="ExecuteTargets">
+
+	<UsingTask TaskName="FindItems" AssemblyFile="$(BDS)\bin\Borland.Build.Tasks.Shared.dll"/>
+	<UsingTask TaskName="CopyItems" AssemblyFile="$(BDS)\bin\Borland.Build.Tasks.Shared.dll"/>
+	<UsingTask TaskName="ProjectDependencyCheck" AssemblyFile="$(BDS)\bin\Borland.Build.Tasks.Shared.dll"/>
+	<UsingTask TaskName="GatherDependencies" AssemblyFile="$(BDS)\bin\Borland.Build.Tasks.Shared.dll"/>
+	<UsingTask TaskName="MessageMap" AssemblyFile="$(BDS)\bin\Borland.Build.Tasks.Shared.dll"/>
+
+	<PropertyGroup>
+		<Targets Condition="'$(Targets)'==''">Make</Targets>
+	</PropertyGroup>
+	
+	<Target Name="_ResolveProjects">
+		<FindItems
+			Condition="'$(Projects)'!=''"
+			Filenames="$(Projects)"
+			Inputs="@(Projects)">
+			<Output 
+				TaskParameter="Outputs"
+				ItemName="ProjectItems"
+			/>
+		</FindItems>
+		<CopyItems
+			Condition="'$(Projects)'==''"
+			Items="@(Projects)">
+			<Output 
+				TaskParameter="Outputs"
+				ItemName="ProjectItems"
+			/>
+		</CopyItems>
+	</Target>
+
+	<Target Name="_ProjectDepCheck" DependsOnTargets="_ResolveProjects">
+		<ProjectDependencyCheck
+			Projects="@(ProjectItems)"
+			GroupProjects="@(Projects)">
+			<Output
+				TaskParameter="ProjectsToBuild"
+				ItemName="ProjectsWithDependencies"
+			/>
+		</ProjectDependencyCheck>
+	</Target>
+
+	<Target Name="_GenerateProjectList" DependsOnTargets="_ProjectDepCheck">
+		<RemoveDuplicates 
+			Inputs="@(ProjectsWithDependencies)">
+			<Output
+				TaskParameter="Filtered"
+				ItemName="ProjectsToBuild"/>
+		</RemoveDuplicates>
+	</Target>
+	
+	<Target Name="_Execute" Outputs="%(ProjectsToBuild.Identity)">
+		<MSBuild
+			Projects="%(ProjectsToBuild.Identity)"
+			Targets="$(Targets)"
+		/>
+	</Target>
+	
+	<Target Name="ExecuteTargets" DependsOnTargets="_GenerateProjectList">
+		<MessageMap
+			Condition="'$(Targets)'!='' And '@(ProjectsToBuild)'!= ''"
+			FormatString="strRunningTargets"
+			Arg0="$(Targets)"
+			Arg1="@(ProjectsToBuild)"
+		/>
+		<CallTarget Targets="_Execute"/>
+	</Target>
+	
+	<Target Name="CleanProjects">
+		<MSBuild
+			Projects="@(Projects)"
+			Targets="CleanAll"
+		/>		
+	</Target>
+
+</Project>

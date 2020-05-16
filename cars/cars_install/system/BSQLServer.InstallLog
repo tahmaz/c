@@ -1,0 +1,34 @@
+﻿Installing assembly 'C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.exe
+   logfile = C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.InstallLog
+Installing service BlackfishSQL...
+Service BlackfishSQL has been successfully installed.
+Creating EventLog source BlackfishSQL in log Application...
+Committing assembly 'C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.exe
+   logfile = C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.InstallLog
+Uninstalling assembly 'C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.exe
+   logfile = C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.InstallLog
+Removing EventLog source BlackfishSQL.
+Service BlackfishSQL is being removed from the system...
+Service BlackfishSQL was successfully removed from the system.
+Installing assembly 'C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.exe
+   logfile = C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.InstallLog
+Installing service BlackfishSQL...
+Service BlackfishSQL has been successfully installed.
+Creating EventLog source BlackfishSQL in log Application...
+Committing assembly 'C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.exe
+   logfile = C:\Program Files\Embarcadero\RAD Studio\7.0\bin\BSQLServer.InstallLog

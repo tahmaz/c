@@ -1,0 +1,88 @@
+create database sabacars;
+
+grant all privileges on sabacars.* to nmtsoft@localhost identified by 'nmtsoft';
+grant CREATE,INSERT,DELETE,UPDATE,SELECT on sabacars.* to nmtsoft@localhost;
+flush privileges;
+
+
+use sabacars;
+
+CREATE TABLE users (
+     id SMALLINT NOT NULL AUTO_INCREMENT,
+     PROGRAM VARCHAR(15),
+     USER VARCHAR(10),
+     PASSWORD VARCHAR(15),
+     TYPE VARCHAR(10),
+     PRIMARY KEY (id)
+);
+
+insert sabacars.users (PROGRAM,USER,PASSWORD,TYPE) values ('CARSSHOP','tahmaz','tehmaz','ADMIN');
+
+CREATE TABLE vrs (
+ID INT NOT NULL AUTO_INCREMENT,
+PROGRAM_NAME VARCHAR(15),
+PROGRAM_VERSION VARCHAR(3),
+MESSAGE VARCHAR(50),
+PRIMARY KEY( id )
+);
+
+insert into vrs (PROGRAM_NAME,PROGRAM_VERSION,MESSAGE) values('CARSSHOP','1.1','HI');
+
+CREATE TABLE esas (
+ID SMALLINT NOT NULL AUTO_INCREMENT,
+marka VARCHAR(30),
+model VARCHAR(30),
+muherrik VARCHAR(30),
+ozellik VARCHAR(10000),
+qiymet int,
+PRIMARY KEY( id )
+)CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE elave (
+ID SMALLINT NOT NULL AUTO_INCREMENT,
+marka VARCHAR(30),
+model VARCHAR(30),
+kod VARCHAR(30),
+qrup VARCHAR(100),
+altqrup VARCHAR(100),
+ad VARCHAR(999),
+qiymet int,
+PRIMARY KEY( id )
+)CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+ALTER TABLE esas ADD il VARCHAR(4) AFTER muherrik;
+ALTER TABLE esas ADD ban VARCHAR(30) AFTER il;
+
+CREATE TABLE archive (
+ID VARCHAR(14),
+marka VARCHAR(30),
+model VARCHAR(30),
+muherrik VARCHAR(30),
+il VARCHAR(4),
+ban VARCHAR(30),
+ozellik VARCHAR(10000),
+qiymet int,
+tarix VARCHAR(10),
+teklifnom VARCHAR(50),
+musteri VARCHAR(30),
+faizp VARCHAR(5),
+faizm VARCHAR(5),
+tarixarc datetime,
+faizel VARCHAR(5),
+faizelp VARCHAR(5),
+faizelm VARCHAR(5),
+PRIMARY KEY( id )
+)CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE archiveelave (
+id SMALLINT NOT NULL AUTO_INCREMENT,
+idarchive VARCHAR(14),
+kod VARCHAR(30),
+qrup VARCHAR(100),
+altqrup VARCHAR(100),
+ad VARCHAR(999),
+qiymet int,
+PRIMARY KEY( id )
+)CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+EXIT

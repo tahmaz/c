@@ -1,0 +1,17 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\CodeGear\BDS\7.0\AutoRun]
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\CodeGear\BDS\7.0\AutoRun\UpdateCheck]
+
+"ProgramToRun"="C:\\ProgramData\\{2D559015-4C05-4AE5-8C8B-7E13E1EAB09D}\\Setup.exe"
+
+"CommandLine"="/update"
+
+[HKEY_CURRENT_USER\SOFTWARE\CodeGear\BDS\7.0\AutoRun\UpdateCheck]
+
+"ProgramToRun"="C:\\ProgramData\\{2D559015-4C05-4AE5-8C8B-7E13E1EAB09D}\\Setup.exe"
+
+"CommandLine"="/update"
+

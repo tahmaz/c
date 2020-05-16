@@ -1,0 +1,72 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit1H
+#define Unit1H
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include <DB.hpp>
+#include <DBCtrls.hpp>
+#include <DBGrids.hpp>
+#include <DBTables.hpp>
+#include <Grids.hpp>
+#include <Mask.hpp>
+#include <Menus.hpp>
+#include <ComCtrls.hpp>
+//---------------------------------------------------------------------------
+class TForm1 : public TForm
+{
+__published:	// IDE-managed Components
+        TDataSource *DataSource1;
+        TDataSource *DataSource2;
+        TQuery *Query1;
+        TDatabase *Database1;
+        TDBGrid *DBGrid1;
+        TGroupBox *GroupBox1;
+        TDBText *DBText1;
+        TLabel *Label2;
+        TLabel *Label4;
+        TLabel *Label5;
+        TLabel *Label6;
+        TLabel *Label7;
+        TLabel *Label12;
+        TEdit *Edit3;
+        TEdit *Edit4;
+        TEdit *Edit5;
+        TEdit *Edit6;
+        TButton *Button1;
+        TButton *Button3;
+        TComboBox *ComboBox1;
+        TQuery *Query2;
+        TMainMenu *MainMenu1;
+        TMenuItem *File1;
+        TMenuItem *Close1;
+        TMenuItem *About1;
+        TMemo *Memo1;
+        TButton *Button2;
+        TGroupBox *GroupBox2;
+        TEdit *Edit1;
+        TComboBox *ComboBox2;
+        TLabel *Label1;
+        TUpDown *UpDown1;
+        void __fastcall Button1Click(TObject *Sender);
+        void __fastcall DBGrid1CellClick(TColumn *Column);
+        void __fastcall Button3Click(TObject *Sender);
+        void __fastcall FormShow(TObject *Sender);
+        void __fastcall About1Click(TObject *Sender);
+        void __fastcall Close1Click(TObject *Sender);
+        void __fastcall Edit1Change(TObject *Sender);
+        void __fastcall ComboBox2Change(TObject *Sender);
+        void __fastcall Button2Click(TObject *Sender);
+private:
+	// User declarations
+public:
+        String Delete;	// User declarations
+        __fastcall TForm1(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif

@@ -1,0 +1,33 @@
+CREATE TABLE btsinternals (
+ID INT NOT NULL AUTO_INCREMENT,
+BSC VARCHAR(2),
+SITE VARCHAR(15),
+MO VARCHAR(15),
+Fault_code VARCHAR(10),
+Repunit VARCHAR(10),
+ALARM_DATE DATE,
+ALARM_TIME TIME,
+Update_datetime DATETIME,
+Description VARCHAR(100),
+Comment mediumtext,
+PRIMARY KEY( id )
+);
+
+drop table btsinternals;
+
+TRUNCATE TABLE btsinternals;
+
+Insert into btsinternals_backup(BSC,SITE,MO,Fault_code,ALARM_DATE,ALARM_TIME,Update_datetime) VALUES('25','00347_SER_NAKER',
+'CF-43','2A 26','101222','030300',Now()) ;
+
+select * from btsinternals;
+
+select * from btsinternals_backup;
+
+Insert into btsinternals_backup select * from btsinternals;
+
+Insert into btsinternals (BSC,SITE,MO,Fault_code,ALARM_DATE,ALARM_TIME,Update_datetime,Description,Comment)
+select BSC,SITE,MO,Fault_code,ALARM_DATE,ALARM_TIME,Update_datetime,Description,Comment from btsinternals_backup where BSC='2';
+
+
+select * from btsinternals_backup where BSC='4B';

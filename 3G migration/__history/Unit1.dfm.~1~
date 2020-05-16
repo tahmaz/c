@@ -1,0 +1,90 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 747
+  ClientWidth = 638
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Memo1: TMemo
+    Left = 24
+    Top = 32
+    Width = 113
+    Height = 545
+    Lines.Strings = (
+      'CELL1'
+      'CELL1'
+      'CELL2'
+      'CELL2'
+      'CELL3'
+      'CELL3'
+      'CELL3'
+      'CELL3')
+    ScrollBars = ssBoth
+    TabOrder = 0
+  end
+  object Memo2: TMemo
+    Left = 143
+    Top = 32
+    Width = 114
+    Height = 545
+    Lines.Strings = (
+      'CELL2'
+      'CELL3'
+      'CELL1'
+      'CELL3'
+      'CELL1'
+      'CELL2'
+      'CELL6'
+      'CELL6')
+    ScrollBars = ssBoth
+    TabOrder = 1
+  end
+  object Memo3: TMemo
+    Left = 24
+    Top = 583
+    Width = 577
+    Height = 145
+    ScrollBars = ssBoth
+    TabOrder = 2
+  end
+  object Button1: TButton
+    Left = 272
+    Top = 531
+    Width = 97
+    Height = 41
+    Caption = 'Button1'
+    TabOrder = 3
+  end
+  object Memo4: TMemo
+    Left = 264
+    Top = 32
+    Width = 361
+    Height = 425
+    ScrollBars = ssBoth
+    TabOrder = 4
+  end
+  object Edit1: TEdit
+    Left = 272
+    Top = 472
+    Width = 345
+    Height = 21
+    TabOrder = 5
+    Text = 'Edit1'
+  end
+  object Edit2: TEdit
+    Left = 272
+    Top = 504
+    Width = 345
+    Height = 21
+    TabOrder = 6
+    Text = 'Edit2'
+  end
+end

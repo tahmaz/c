@@ -1,0 +1,62 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit3.h"
+#include "Unit2.h"
+#include "OKCNHLP1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm3 *Form3;
+//---------------------------------------------------------------------------
+__fastcall TForm3::TForm3(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm3::Button2Click(TObject *Sender)
+{
+Form3->Close();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm3::Button3Click(TObject *Sender)
+{
+	Form2->ArchiveSQLQuery->Close();
+	Form2->ArchiveSQLQuery->Open();
+
+	if (Form2->ArchiveClientDataSet->Active==true)
+	Form2->ArchiveClientDataSet->Close();
+	Form2->ArchiveClientDataSet->Open();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm3::Button4Click(TObject *Sender)
+{
+Form2->tesdiq=false;
+OKHelpBottomDlg->ShowModal();
+
+if(Form2->tesdiq){
+	//silinme
+	String id=Form2->ArchiveClientDataSet->FieldByName("id")->AsString;
+
+	if (Form2->TempSQLQuery->Active==true)
+	Form2->TempSQLQuery->Close();
+
+	//daxil et
+	TempSQLQuery->SQL->Clear();
+	TempSQLQuery->SQL->Add("delete from esas where id='"+id+"'");
+	TempSQLQuery->ExecSQL();
+
+	Form2->ArchiveSQLQuery->Close();
+	Form2->ArchiveSQLQuery->Open();
+
+	if (Form2->ArchiveClientDataSet->Active==true)
+	Form2->ArchiveClientDataSet->Close();
+	Form2->ArchiveClientDataSet->Open();
+
+}
+
+}
+//---------------------------------------------------------------------------
+

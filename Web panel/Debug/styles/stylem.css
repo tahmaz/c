@@ -1,0 +1,63 @@
+/* ------------------
+ styling for the tables 
+   ------------------   */
+
+
+body
+{
+	line-height: 1.6em;
+}
+
+
+
+#box-table-a
+{
+	font-family: "Times New Roman", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	width: 480px;
+	text-align: left;
+	border-collapse: collapse;
+}
+#box-table-a th
+{
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	border: 1px solid #dfe5e5;
+	border-top: 4px solid #dfe5e5;
+	color: #039;
+	background: #f9f9f9;
+}
+#box-table-a td
+{
+	padding: 8px;
+	border: 1px solid #dfe5e5;
+	color: #669;
+	border-top: 1px solid transparent;
+}
+#box-table-a tr:hover td
+{
+	background: #f9f9f9;
+	color: #339;
+}
+
+.a
+{
+	text-decoration:none;
+	color:black;
+	background:url(../images/button_etrafli_small.gif) no-repeat;
+	background-position:center;
+	padding:10px 20px 10px 20px;
+}
+.a:hover
+{
+	background:url(../images/button_etrafli_small2.gif) no-repeat;
+	background-position:center;
+	color:white;
+}
+
+.axtar {border-left: 1px solid #404040; border-top: 1px solid #404040; border-bottom: 1px solid #d4d0c8; border-right: 1px solid #d4d0c8; width:200px; height:20px; font-family:tahoma; font-size:11px; color:#444444; padding-left:3px;}
+
+.button1{background: url('../images/button_etrafli_small.gif') no-repeat; border:none; height:20px; width:90px; cursor:pointer;}
+.button1:hover{background: url('../images/button_etrafli_small2.gif') no-repeat;}

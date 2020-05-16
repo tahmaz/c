@@ -1,0 +1,13 @@
+CREATE TABLE sabacars.vrs (
+ID INT NOT NULL AUTO_INCREMENT,
+PROGRAM_NAME VARCHAR(15),
+PROGRAM_VERSION VARCHAR(3),
+MESSAGE VARCHAR(50),
+PRIMARY KEY( id )
+);
+
+drop table version;
+
+insert into vrs (PROGRAM_NAME,PROGRAM_VERSION,MESSAGE) values('CARSSHOP','1.1','HI');
+
+select * from version;

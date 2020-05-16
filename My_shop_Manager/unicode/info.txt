@@ -1,0 +1,4 @@
+TNT-data base-de gormek ucun istifade edilir.
+Mydac database-ile elaqe ucun.
+font Arial Unocode MS
+MyConnection1-de Cahrset=utf8,UseUnicode=true;

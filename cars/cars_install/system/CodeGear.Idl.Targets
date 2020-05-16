@@ -1,0 +1,125 @@
+<!--
+===============================================================================================
+
+	CodeGear.Idl.Targets
+
+	WARNING
+
+	DO NOT MODIFY unless you have made a backup of these files.  Modifying
+	this file unless you have knowledge about MSBuild you could cause problems
+	when loading or building projects in the IDE or building from the
+	command-line.
+
+===============================================================================================
+-->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<UsingTask TaskName="TAO_IDL" AssemblyFile="$(BDS)\bin\Borland.Build.Tasks.Idl.dll"/>
+
+	<Target Name="_ResolveIDLInputFile">
+		<Error Condition="'$(FileToCompile)'==''"
+			Text="Must specify property 'FileToCompile' for 'CompileIDL' target; i.e., /p:FileToCompile=&lt;filename&gt;."/>
+		<CreateItem
+			Condition="'$(FileToCompile)'!=''"
+			Include="$(FileToCompile)">
+			<Output 
+				TaskParameter="Include"
+				ItemName="IDLInputFile"
+			/>
+		</CreateItem>
+	</Target>
+
+	<Target Name="_ResolveIDLFile">
+		<Error Condition="'%(IDLInputFile.Extension)'!='.idl'"
+			Text="Wrong file type specified for 'CompileIDL target. Expected '.idl', got '%(IDLInputFile.Extension)'"
+		/>
+		<CreateItem
+			Condition="'%(IDLInputFile.Extension)'=='.idl'"
+			Include="%(IDLInputFile.Identity)">
+			<Output 
+				TaskParameter="Include"
+				ItemName="IDLFile"
+			/>
+		</CreateItem>
+	</Target>
+
+	<Target Name="CompileIDL" Outputs="%(IDLFile.Identity)" DependsOnTargets="_ResolveIDLInputFile;_ResolveIDLFile">
+		<CallTarget Targets="_TAO_IDL_Compile" Condition="'@(IDLFile)'!=''"/>
+	</Target>
+	
+	<Target Name="_TAO_IDL_Compile">
+		<TAO_IDL
+			IDLFiles="@(IDLFile)"
+			IDLClientStubs="@(IDLFile->'%(RelativeDir)%(Filename)C.cpp');@(IDLFile->'%(RelativeDir)%(Filename)C.h');@(IDLFile->'%(RelativeDir)%(Filename)C.inl')"
+			IDLServerSkeletons="@(IDLFile->'%(RelativeDir)%(Filename)S.cpp');@(IDLFile->'%(RelativeDir)%(Filename)S.h');@(IDLFile->'%(RelativeDir)%(Filename)S.inl')"
+			IDLServerSkeletonTemplates="@(IDLFile->'%(RelativeDir)%(Filename)S_T.cpp');@(IDLFile->'%(RelativeDir)%(Filename)S_T.h');@(IDLFile->'%(RelativeDir)%(Filename)S_T.inl')"
+			OptimizeValueTypes="$(TAO_IDL_OptimizeValueTypes)"
+			PreprocessorArgs="$(TAO_IDL_PreprocessorArgs)"
+			SameCaseIdentifiers="$(TAO_IDL_SameCaseIdentifiers)"
+			DemuxingStrategy="$(TAO_IDL_DemuxingStrategy)"
+			AMIStubs="$(TAO_IDL_AMIStubs)"
+			AMHStubs="$(TAO_IDL_AMHStubs)"
+			CollocatedStubs="$(TAO_IDL_CollocatedStubs)"
+			CorbaE="$(TAO_IDL_CorbaE)"
+			CorbaMin="$(TAO_IDL_CorbaMin)"
+			SmartClientProxies="$(TAO_IDL_SmartClientProxies)"
+			OptimizedTypeCodes="$(TAO_IDL_OptimizedTypeCodes)"
+			UninlinedConstant="$(TAO_IDL_UninlinedConstant)"
+			BoilerPlate="$(TAO_IDL_BoilerPlate)"
+			CopyConstructors="$(TAO_IDL_CopyConstructors)"
+			AssignmentOperators="$(TAO_IDL_AssignmentOperators)"
+			FileLineNos="$(TAO_IDL_FileLineNos)"
+			TIEClasses="$(TAO_IDL_TIEClasses)"
+			TypeCodesAny="$(TAO_IDL_TypeCodesAny)"
+			iostreamOperators="$(TAO_IDL_iostreamOperators)"
+			SuppressAny="$(TAO_IDL_SuppressAny)"
+			SuppressAnyInterfaces="$(TAO_IDL_SuppressAnyInterfaces)"
+			SuppressThruPOA="$(TAO_IDL_SuppressThruPOA)"
+			SuppressDirect="$(TAO_IDL_SuppressDirect)"
+			SuppressTypeCodes="$(TAO_IDL_SuppressTypeCodes)"
+			DumpToAST="$(TAO_IDL_DumpToAST)"
+			SuppressSkeleton="$(TAO_IDL_SuppressSkeleton)"
+			SuppressClientInline="$(TAO_IDL_SuppressClientInline)"
+			SuppressClientStubFile="$(TAO_IDL_SuppressClientStubFile)"
+			SuppressServerInline="$(TAO_IDL_SuppressServerInline)"
+			SuppressServerSkeleton="$(TAO_IDL_SuppressServerSkeleton)"
+			SuppressOrbInclude="$(TAO_IDL_SuppressOrbInclude)"
+			SkelExportMacro="$(TAO_IDL_SkelExportMacro)"
+			SkelExportInclude="$(TAO_IDL_SkelExportInclude)"
+			StubExportMacro="$(TAO_IDL_StubExportMacro)"
+			StubExportInclude="$(TAO_IDL_StubExportInclude)"
+			AnyopExportMacro="$(TAO_IDL_AnyopExportMacro)"
+			AnyopExportInclude="$(TAO_IDL_AnyopExportInclude)"
+			ExportMacro="$(TAO_IDL_ExportMacro)"
+			ExportInclude="$(TAO_IDL_ExportInclude)"
+			PCHInclude="$(TAO_IDL_PCHInclude)"
+			PreInclude="$(TAO_IDL_PreInclude)"
+			PostInclude="$(TAO_IDL_PostInclude)"
+			IncludeGuardDefine="$(TAO_IDL_IncludeGuardDefine)"
+			SafeInclude="$(TAO_IDL_SafeInclude)"
+			UniqueInclude="$(TAO_IDL_UniqueInclude)"
+			Defines="$(TAO_IDL_Defines)"
+			IncludePath="$(TAO_IDL_IncludePath)"
+			Undefines="$(TAO_IDL_Undefines)"
+			PreprocessorPath="$(TAO_IDL_PreprocessorPath)">
+			<Output 
+				TaskParameter="IDLClientStubs"
+				ItemName="IDLClientStubs"
+			/>
+			<Output 
+				TaskParameter="IDLServerSkeletons"
+				ItemName="IDLServerSkeletons"
+			/>
+			<Output 
+				TaskParameter="IDLServerSkeletonTemplates"
+				ItemName="IDLServerSkeletonTemplates"
+			/>
+			<Output 
+				TaskParameter="ASTDump"
+				ItemName="ASTDump"
+			/>
+		</TAO_IDL>
+	</Target>
+
+</Project>
